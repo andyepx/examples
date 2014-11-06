@@ -1,0 +1,12 @@
+
+
+#uploaderControls(ng-controller="UploaderCtrl")
+	input#filePicker(type="file", ng-file-select="pickFile($files)", ng-hide="true")
+	.files-drag(ng-file-drop="pickFile($files)", ng-click="uploadNavigate()", ng-file-drag-over-class="files-drag-over") Drop files here or click to select <br> <span class="small">Please note, NewsCube currently supports {{media.filetypes}} and up to <b>{{media.filemaxsize}}</b> per file.</span>
+	.uploadProgress(ng-show="isUploading") Uploading... {{uploadPercent}}
+			
+	.uploadedContent
+		.imgContainer(ng-repeat="a in uploadedStuff", ng-click="selectUploaded(a)", ng-class="{selected: (a.localName == selectedFile.localName)}")
+		img(ng-src="{{getPreview(a)}}")
+
+	.uploadError {{uploadError}}
